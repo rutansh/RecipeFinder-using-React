@@ -12,8 +12,6 @@ const Recipe=({title,calories,image,ingredients})=>{
 
                 ))}
             </ol>
-            
-            
             <img className={style.image} src={image}alt=""/>
             
         </div>

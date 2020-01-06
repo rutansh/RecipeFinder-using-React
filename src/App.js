@@ -3,18 +3,15 @@ import logo from './logo.svg';
 import './App.css';
 import Recipe from './Recipe';
 
- 
-const App=()=> {
-  const APP_ID="d1dda505";
-  const APP_KEY="789a2a9d7d530bcefba2bb01b19e9165";
-  
+ const App=()=> {
+  const APP_ID="appid";
+  const APP_KEY="key";
   const[recipes,setRecipes]=useState([]);  
   const[search,setSearch]=useState(''); 
   const [query,setQuery]=useState('chicken');
   useEffect(()=>{
     getRecipes();
   },[query]);
-
   const getRecipes=async ()=>{
     const response=await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`);
     const data=await response.json();
@@ -22,7 +19,6 @@ const App=()=> {
     setRecipes(data.hits);
   };
   const updateSearch=e=>{
-
     setSearch(e.target.value);
     console.log(search);
   };
@@ -31,7 +27,6 @@ const App=()=> {
     setQuery(search);
     setSearch('');
   }
-
   return (
 
     <div className="App">
@@ -41,7 +36,6 @@ const App=()=> {
     </form>
     <div className="container">
     <div className="row">
-
     <div classname="recipes" className="col-md-4">
     {recipes.map(recipe=>(
     <Recipe 
@@ -51,11 +45,9 @@ const App=()=> {
     image={recipe.recipe.image}
     ingredients={recipe.recipe.ingredients}
     />))};
-    
     </div>
     </div>
     </div>
-    
     </div>
   );
 }
